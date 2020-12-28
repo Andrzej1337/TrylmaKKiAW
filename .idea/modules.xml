@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Klient/Klient.iml" filepath="$PROJECT_DIR$/Klient/Klient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pośrednik/Pośrednik.iml" filepath="$PROJECT_DIR$/Pośrednik/Pośrednik.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Serwer/Serwer.iml" filepath="$PROJECT_DIR$/Serwer/Serwer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Trylma.iml" filepath="$PROJECT_DIR$/Trylma.iml" />
+    </modules>
+  </component>
+</project>

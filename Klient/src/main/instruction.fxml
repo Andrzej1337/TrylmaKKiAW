@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx">
+    <TextFlow layoutX="55.0" layoutY="14.0" prefHeight="42.0" prefWidth="490.0" textAlignment="CENTER">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Instrukcja gry" textAlignment="CENTER"
+              wrappingWidth="52.13671875">
+            <font>
+                <Font name="System Bold" size="25.0"/>
+            </font>
+        </Text>
+    </TextFlow>
+    <TextFlow layoutX="55.0" layoutY="77.0" prefHeight="255.0" prefWidth="490.0">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Celem gry jest wypełnienie swoimi pionkami przeciwnego narożnika planszy.&#10;&#10;"/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zasady poruszania pionków:&#10;">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Text>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0"
+              text="1. Można przesunąć pionek na dowolne, sąsiednie, puste pole&#10;2. Można przeskoczyć dowolny pionek. Po skoku gracz kontynuuje turę, można się jednak ruszyć jedynie tym samym pionkiem co wcześniej&#10;&#10;"/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sterowanie:&#10;">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Text>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0"
+              text="- Zaczekaj aż będzie Twoja tura&#10;- Kliknij raz w pionek, aby zobaczyć możliwe ruchy&#10;- Kliknij w podświetlone na niebiesko pole, aby wykonać ruch&#10;- W zależności od rodzaju ruchu, Twoja tura może się skończyć lub nie&#10;- Kliknij drugi raz w zaznaczonego pionka, aby zakończyć turę"/>
+    </TextFlow>
+</AnchorPane>
