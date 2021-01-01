@@ -18,7 +18,7 @@ Server
     private Match match;
 
     private int numberOfRealPlayers = 1;
-    private int numberOfBots = 0;
+
 
     Server( int port ) throws Exception
     {
@@ -39,13 +39,13 @@ Server
         {
             System.out.println("Domyślnie mecz uruchomi się za 10 sekund z ustawieniami:");
             System.out.println( "Liczba graczy . . . " + numberOfRealPlayers );
-            System.out.println( "Liczba botów  . . . " + numberOfBots );
+
             System.out.println();
-            System.out.println( "Wciśnij ENTER aby zmienić liczbę graczy i botów" );
+            System.out.println( "Wciśnij ENTER aby zmienić liczbę graczy" );
             waitForInput();
             try
             {
-                startMatch( numberOfRealPlayers, numberOfBots );
+                startMatch( numberOfRealPlayers );
             }
             catch( Exception e )
             {
@@ -59,8 +59,8 @@ Server
 
     private void startMatch( int numberOfRealPlayers, int numberOfBots ) throws Exception
     {
-        System.out.println( "Rozpoczynanie meczu: " + numberOfRealPlayers + " graczy, " + numberOfBots + " botów" );
-        int totalNumberOfPlayers = numberOfRealPlayers + numberOfBots;
+        System.out.println( "Rozpoczynanie meczu: " + numberOfRealPlayers + " graczy" );
+        int totalNumberOfPlayers = numberOfRealPlayers;
         int numberOfAvailableColors = PlayerColor.values().length - 1;
 
         if( totalNumberOfPlayers < 1 || totalNumberOfPlayers > numberOfAvailableColors )
@@ -69,16 +69,16 @@ Server
         }
         else
         {
-            createMatch( numberOfRealPlayers, numberOfBots );
+            createMatch( numberOfRealPlayers );
             match.start();
         }
 
     }
 
-    private void createMatch( int numberOfRealPlayers, int numberOfBots ) throws Exception
+    private void createMatch( int numberOfRealPlayers ) throws Exception
     {
         connectPlayers( numberOfRealPlayers );
-        match = new Match( playerSockets, numberOfBots );
+        match = new Match( playerSockets );
     }
 
     private void connectPlayers( int numberOfPlayersToConnect ) throws Exception
@@ -109,7 +109,7 @@ Server
             while( ( System.currentTimeMillis() - startTime ) < seconds * 1000 && !in.ready() );
             if( in.ready() )
             {
-                readNumberOfPlayersAndBots();
+                readNumberOfPlayers();
             }
         }
         catch( Exception ignored )
@@ -119,26 +119,24 @@ Server
         }
     }
 
-    private void readNumberOfPlayersAndBots()
+    private void readNumberOfPlayers()
     {
         boolean inputCorrect;
         do
         {
             inputCorrect = true;
-            System.out.println( "Podaj: liczba graczy liczba botów" );
+            System.out.println( "Podaj: liczba graczy" );
             Scanner scanner = new Scanner( System.in );
 
             int newNumberOfRealPlayers;
-            int newNumberOfBots;
             try
             {
                 newNumberOfRealPlayers = scanner.nextInt();
-                newNumberOfBots = scanner.nextInt();
-                int total = newNumberOfRealPlayers + newNumberOfBots;
+                int total = newNumberOfRealPlayers;
                 if( total >= 1 && total <= 6 )
                 {
                     numberOfRealPlayers = newNumberOfRealPlayers;
-                    numberOfBots = newNumberOfBots;
+
                 }
             }
             catch( Exception e )
