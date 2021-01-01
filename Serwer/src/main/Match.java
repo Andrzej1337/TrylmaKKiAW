@@ -1,10 +1,15 @@
 package main;
 
-import player.ClassicBot;
+import movement.*;
+
 import player.Player;
 import player.PlayerLeftException;
 import player.RealPlayer;
 import serverboard.ClassicBoardFactory;
+import shared.Coord;
+import shared.PlayerColor;
+import shared.Response;
+import shared.ResponseInterpreter;
 
 import java.net.Socket;
 import java.util.ArrayList;
@@ -24,7 +29,7 @@ class Match
     private boolean turnFinished;
     private int place;
 
-    Match( List<Socket> playerSockets, int numberOfBots ) throws Exception
+    Match( List<Socket> playerSockets) throws Exception
     {
         gameMaster = new GameMaster(new BasicMovementStrategy(), new ClassicBoardFactory());
         players = new ArrayList<>();
@@ -32,7 +37,7 @@ class Match
         int numberOfRealPlayers = playerSockets.size();
 
 
-        int totalNumberOfPlayers = numberOfRealPlayers + numberOfBots;
+        int totalNumberOfPlayers = numberOfRealPlayers;
         System.out.print("TOTAL: " + totalNumberOfPlayers);
         gameMaster.initializeBoard(totalNumberOfPlayers);
         availableColors = gameMaster.getPossibleColorsForPlayers( totalNumberOfPlayers );
@@ -41,8 +46,7 @@ class Match
         place = 1;
 
         addRealPlayers( playerSockets );
-        addBotPlayers(numberOfBots, playerSockets.size());
-    }
+        }
 
     private void addRealPlayers( List<Socket> playerSockets ) throws Exception
     {
@@ -55,14 +59,6 @@ class Match
         }
     }
 
-    private void addBotPlayers(int numberOfBots, int colorIndex)
-    {
-        for (int i = colorIndex; i < numberOfBots + colorIndex; i++)
-        {
-            System.out.print("Dodano bota");
-            players.add(new ClassicBot(availableColors[i], gameMaster));
-        }
-    }
 
     void start()
     {
@@ -137,7 +133,7 @@ class Match
         } while( !turnFinished );
     }
 
-    private Response readProperResponseFromPlayer( Player player ) throws PlayerLeftException
+    private Response readProperResponseFromPlayer(Player player ) throws PlayerLeftException
     {
         System.out.print("Oczekiwanie na odpowiedź od gracza... ");
         String line = player.readResponse();

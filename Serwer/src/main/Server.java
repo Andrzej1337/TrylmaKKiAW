@@ -57,7 +57,7 @@ Server
         }
     }
 
-    private void startMatch( int numberOfRealPlayers, int numberOfBots ) throws Exception
+    private void startMatch( int numberOfRealPlayers ) throws Exception
     {
         System.out.println( "Rozpoczynanie meczu: " + numberOfRealPlayers + " graczy" );
         int totalNumberOfPlayers = numberOfRealPlayers;
