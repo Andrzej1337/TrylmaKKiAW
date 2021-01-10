@@ -42,9 +42,9 @@ public class GameMaster
         case 3:
             return new PlayerColor[]{PlayerColor.RED, PlayerColor.BLUE, PlayerColor.YELLOW};
         case 4:
-            return new PlayerColor[]{PlayerColor.BLUE, PlayerColor.YELLOW, PlayerColor.VIOLET, PlayerColor.ORANGE};
+            return new PlayerColor[]{PlayerColor.BLUE, PlayerColor.YELLOW, PlayerColor.ORANGE, PlayerColor.VIOLET};
         case 6:
-            return new PlayerColor[]{PlayerColor.RED, PlayerColor.GREEN, PlayerColor.BLUE, PlayerColor.ORANGE, PlayerColor.YELLOW, PlayerColor.VIOLET};
+            return new PlayerColor[]{PlayerColor.RED, PlayerColor.VIOLET, PlayerColor.BLUE, PlayerColor.GREEN, PlayerColor.YELLOW, PlayerColor.ORANGE};
         }
         throw new RuntimeException( "Podano nieprawidłową liczbę graczy: " + numberOfPlayers );
     }
