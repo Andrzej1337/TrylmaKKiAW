@@ -114,9 +114,6 @@ public class GameMaster
         return board.getAsString();
     }
 
-    public Board getBoard()
-    {
-        return board;
-    }
+
 
 }
