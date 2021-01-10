@@ -17,7 +17,7 @@ Server
     private List<Socket> playerSockets;
     private Match match;
 
-    private int numberOfRealPlayers = 1;
+    private int numberOfRealPlayers = 2;
 
 
     Server( int port ) throws Exception
@@ -60,7 +60,7 @@ Server
     private void startMatch( int numberOfRealPlayers ) throws Exception
     {
         System.out.println( "Rozpoczynanie meczu: " + numberOfRealPlayers + " graczy" );
-        int numberOfRealPlayers = numberOfRealPlayers;
+
         int numberOfAvailableColors = PlayerColor.values().length - 1;
 
         if( numberOfRealPlayers < 1 || numberOfRealPlayers > numberOfAvailableColors )
