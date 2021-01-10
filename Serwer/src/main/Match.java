@@ -2,7 +2,7 @@ package main;
 
 import movement.*;
 
-import player.Player;
+
 import player.PlayerLeftException;
 import player.RealPlayer;
 import serverboard.ClassicBoardFactory;
@@ -18,7 +18,7 @@ import java.util.List;
 class Match
 {
     private GameMaster gameMaster;
-    private List<Player> players;
+    private List<RealPlayer> players;
     private PlayerColor[] availableColors;
 
     private JumpStatusVerifyCondition jumpStatus;
@@ -107,7 +107,7 @@ class Match
         System.out.println("Koniec meczu");
     }
 
-    private void playTurnForPlayer( Player player ) throws PlayerLeftException
+    private void playTurnForPlayer( RealPlayer player ) throws PlayerLeftException
     {
         setDefaultSettingsForNewTurn();
         player.sendCommand( "YOU" );
@@ -124,7 +124,7 @@ class Match
         turnFinished = false;
     }
 
-    private void readResponsesAndExecute(Player player) throws PlayerLeftException
+    private void readResponsesAndExecute(RealPlayer player) throws PlayerLeftException
     {
         do
         {
@@ -133,7 +133,7 @@ class Match
         } while( !turnFinished );
     }
 
-    private Response readProperResponseFromPlayer(Player player ) throws PlayerLeftException
+    private Response readProperResponseFromPlayer(RealPlayer player ) throws PlayerLeftException
     {
         System.out.print("Oczekiwanie na odpowiedź od gracza... ");
         String line = player.readResponse();
@@ -146,7 +146,7 @@ class Match
         return responses[0];
     }
 
-    private void executeResponse( Player player, Response response )
+    private void executeResponse( RealPlayer player, Response response )
     {
         String responseType = response.getCode();
         switch( responseType )
@@ -165,13 +165,13 @@ class Match
         }
     }
 
-    private void sendStopAndFinishTurn( Player player )
+    private void sendStopAndFinishTurn(RealPlayer player )
     {
         player.sendCommand( "STOP" );
         turnFinished = true;
     }
 
-    private void executeCluesResponse( Player player, Response response )
+    private void executeCluesResponse(RealPlayer player, Response response )
     {
         boolean correctCluesResponse = response.getCode().equals( "CLUES" ) && response.getNumbers().length == 2;
         if( correctCluesResponse )
@@ -186,7 +186,7 @@ class Match
         }
     }
 
-    private void sendClues( Player player, int x, int y )
+    private void sendClues(RealPlayer player, int x, int y )
     {
         ((PreviousPawnVerifyCondition)conditions[1]).setCurrentXY( x, y );
 
@@ -196,7 +196,7 @@ class Match
         player.sendCommand( command );
     }
 
-    private void executeMoveResponse( Player player, Response response )
+    private void executeMoveResponse(RealPlayer player, Response response )
     {
         boolean correctMoveResponse = response.getCode().equals( "MOVE" ) && response.getNumbers().length == 4;
         if( correctMoveResponse )
@@ -213,7 +213,7 @@ class Match
         }
     }
 
-    private void verifyMoveAndExecute( Player player, int fromX, int fromY, int toX, int toY )
+    private void verifyMoveAndExecute(RealPlayer player, int fromX, int fromY, int toX, int toY )
     {
         previousPawn.setCurrentXY( fromX, fromY );
 
@@ -229,7 +229,7 @@ class Match
         }
     }
 
-    private void makeMove( Player player, int fromX, int fromY, int toX, int toY )
+    private void makeMove(RealPlayer player, int fromX, int fromY, int toX, int toY )
     {
         jumpStatus.setStatus( moveDistance );
         previousPawn.setPreviousXY( toX, toY );
@@ -252,7 +252,7 @@ class Match
         }
     }
 
-    private void makePlayerFinishedAndSendResponses( Player player )
+    private void makePlayerFinishedAndSendResponses(RealPlayer player )
     {
         System.out.println( "Gracz " + player.getColor().toString() + " zakończył na miejscu " + place );
         player.sendCommand( "END " + place );
@@ -261,7 +261,7 @@ class Match
         sendToAll( "BOARD " + gameMaster.getBoardAsString() );
     }
 
-    private void sendResponsesAfterShortJump( Player player )
+    private void sendResponsesAfterShortJump(RealPlayer player )
     {
         System.out.println("Wykonano krótki ruch. Koniec tury");
 
@@ -269,7 +269,7 @@ class Match
         sendToAll( "BOARD " + gameMaster.getBoardAsString() );
     }
 
-    private void sendResponsesAfterLongJump( Player player )
+    private void sendResponsesAfterLongJump(RealPlayer player )
     {
         System.out.println("Wykonano skok nad pionkiem");
 
@@ -283,7 +283,7 @@ class Match
         sendToAllExceptOne( msg, player );
     }
 
-    private void sendNokAndPrintIncorrectResponse( Player player )
+    private void sendNokAndPrintIncorrectResponse(RealPlayer player )
     {
         System.err.println( "Otrzymano nieprawidłowy komunikat od gracza " + player.getColor().toString() );
         player.sendCommand( "NOK" );
@@ -291,7 +291,7 @@ class Match
 
     private boolean allPlayersFinished()
     {
-        for( Player player : players )
+        for( RealPlayer player : players )
         {
             if( !player.isFinished() )
                 return false;
@@ -321,7 +321,7 @@ class Match
             if( nextPlayerFinished ) // sprawdź czy pozostali jeszcze jacyś gracze
             {
                 int howManyFinished = 0;
-                for( Player p : players )
+                for( RealPlayer p : players )
                 {
                     if( p.isFinished() )
                         howManyFinished++;
@@ -341,7 +341,7 @@ class Match
      */
     private void sendToAll(String command)
     {
-        for (Player player : players)
+        for (RealPlayer player : players)
         {
             player.sendCommand(command);
         }
@@ -351,9 +351,9 @@ class Match
      * Wysyła komendę do wszystkich graczy z tablicy 'players',
      * pomijając gracza 'excluded'
      */
-    private void sendToAllExceptOne( String command, Player excluded)
+    private void sendToAllExceptOne(String command, RealPlayer excluded)
     {
-        for (Player player : players)
+        for (RealPlayer player : players)
         {
             if (player != excluded)
                 player.sendCommand(command);
@@ -378,7 +378,7 @@ class Match
     private void endMatchWithError( String message )
     {
         System.out.println("Przerwanie meczu: " + message);
-        for( Player player : players )
+        for( RealPlayer player : players )
         {
             try
             {
