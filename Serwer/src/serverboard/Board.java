@@ -140,13 +140,4 @@ public abstract class Board
         return coords;
     }
 
-    public int getColumns()
-    {
-        return columns;
-    }
-
-    public int getRows()
-    {
-        return rows;
-    }
 }

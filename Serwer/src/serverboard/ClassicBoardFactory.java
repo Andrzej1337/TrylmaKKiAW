@@ -15,7 +15,7 @@ public class ClassicBoardFactory implements BoardFactory
     @Override
     public Board createBoard(int numberOfPlayers)
     {
-        //ustawienie wszystkich graczy jako nieobecnych - nie trzeba będzie tego robić w poniższym switch'u
+
         setBluePlayer(false);
         setGreenPlayer(false);
         setOrangePlayer(false);
