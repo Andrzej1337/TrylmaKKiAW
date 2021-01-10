@@ -37,10 +37,10 @@ class Match
         int numberOfRealPlayers = playerSockets.size();
 
 
-        int totalNumberOfPlayers = numberOfRealPlayers;
-        System.out.print("TOTAL: " + totalNumberOfPlayers);
-        gameMaster.initializeBoard(totalNumberOfPlayers);
-        availableColors = gameMaster.getPossibleColorsForPlayers( totalNumberOfPlayers );
+
+        System.out.print("TOTAL: " + numberOfRealPlayers);
+        gameMaster.initializeBoard(numberOfRealPlayers);
+        availableColors = gameMaster.getPossibleColorsForPlayers( numberOfRealPlayers );
 
         turnFinished = true;
         place = 1;

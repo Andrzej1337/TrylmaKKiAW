@@ -5,7 +5,7 @@ import shared.PlayerColor;
 import java.net.Socket;
 
 /**
- * Reprezentuje realnego gracza (nie bota) na serwerze
+ * Reprezentuje realnego gracza na serwerze
  */
 public class RealPlayer extends Player
 {

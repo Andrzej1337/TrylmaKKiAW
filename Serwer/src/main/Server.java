@@ -60,10 +60,10 @@ Server
     private void startMatch( int numberOfRealPlayers ) throws Exception
     {
         System.out.println( "Rozpoczynanie meczu: " + numberOfRealPlayers + " graczy" );
-        int totalNumberOfPlayers = numberOfRealPlayers;
+        int numberOfRealPlayers = numberOfRealPlayers;
         int numberOfAvailableColors = PlayerColor.values().length - 1;
 
-        if( totalNumberOfPlayers < 1 || totalNumberOfPlayers > numberOfAvailableColors )
+        if( numberOfRealPlayers < 1 || numberOfRealPlayers > numberOfAvailableColors )
         {
             throw new RuntimeException( "Nieprawidłowe parametry dot. liczby graczy" );
         }
