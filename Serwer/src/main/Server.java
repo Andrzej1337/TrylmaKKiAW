@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class
-Server
+class Server
 {
     private ServerSocket serverSocket;
     private List<Socket> playerSockets;
@@ -34,7 +33,7 @@ Server
 
     void run()
     {
-        //noinspection InfiniteLoopStatement
+
         while( true )
         {
             System.out.println("Domyślnie mecz uruchomi się za 10 sekund z ustawieniami:");
