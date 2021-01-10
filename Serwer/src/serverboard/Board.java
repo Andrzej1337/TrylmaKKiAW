@@ -42,9 +42,9 @@ public abstract class Board
     {
         if (fields[x][y].isPlayable())
         {
-            // TODO CHECK UNEXPECTED BEHAVIOR
+
             fields[x][y].setCurrentColor(PlayerColor.NONE);
-            //setField(x, y, new Field(PlayerColor.NONE, fields[x][y].getNativeColor(), fields[x][y].getTargetColor(), true));
+
 
         } else
         {

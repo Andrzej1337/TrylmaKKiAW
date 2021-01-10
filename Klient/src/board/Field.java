@@ -10,8 +10,8 @@ import shared.PlayerColor;
  */
 public class Field
 {
-    private int x;                                  // Współrzędna X pola (kolumna)
-    private int y;                                  // Współrzędna Y pola (wiersz)
+    private int x;                                  // kolumna
+    private int y;                                  // wiersz
     private Circle circle;                          // Referencja do odpowiadającego Circle w GUI
     private PlayerColor color = PlayerColor.NONE;   // Kolor pionka na danym polu
 
