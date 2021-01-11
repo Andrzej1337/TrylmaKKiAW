@@ -68,3 +68,6 @@ class ResponseInterpreterTest
         assertEquals( "KOD", responses[ 2 ].getCode() );
         assertEquals( 1, responses[ 2 ].getNumbers().length );
         assertEquals( 10, responses[ 2 ].getNumbers()[ 0 ] );
+
+    }
+}
