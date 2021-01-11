@@ -248,7 +248,7 @@ public class Controller
         ipAddressField.setText( "localhost" );              // ustawienie domyślne
         TextField portField = new TextField();
         portField.setPromptText("port");
-        portField.setText("4444");                          // ustawienie domyślne
+        portField.setText("8888");                          // ustawienie domyślne
 
         grid.add(new Label("IP:"), 0, 0);
         grid.add(ipAddressField, 1, 0);

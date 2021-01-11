@@ -75,7 +75,7 @@ class Player
         }
         else
         {
-            System.out.println("Pytam o CLUES");
+            System.out.println("Pytam o wskazówki");
             board.selectField( x, y );
             askServerForClues( x, y );
         }
@@ -184,7 +184,7 @@ class Player
                 printAlert.accept( "Grasz jako: " + color.toString() + ". Trwa tura innego gracza..." );
                 break;
             case "YOU":
-                printSuccess.accept( "("+color.toString()+") Twoja tura" );
+                printSuccess.accept( color.toString()+" Twoja tura" );
                 yourTurn = true;
                 break;
             case "BOARD":
